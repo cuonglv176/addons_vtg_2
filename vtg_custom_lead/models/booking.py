@@ -131,6 +131,7 @@ class CRM_Booking(models.Model):
         ('draft', 'Nháp'),
         ('confirm', 'Chờ khách tới'),
         ('confirmed', 'Khách đã tới'),
+        ('cancel_duplicate', 'Khách đã tới nhưng trùng'),
         ('cancel_buy', 'Khách đã tới nhưng không mua'),
         ('cancel', 'Từ chối'),
         ('cancel_10', 'Hủy quá 10 ngày')
@@ -390,6 +391,9 @@ class CRM_Booking(models.Model):
 
     def action_cancel_booking(self):
         self.state = 'cancel'
+
+    def action_cancel_duplicate(self):
+        self.state = 'cancel_duplicate'
 
     def action_cancel_buy(self):
         self.state = 'cancel_buy'

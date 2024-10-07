@@ -19,6 +19,8 @@
                                 groups="vtg_security.group_vtg_employee_cashier"/>
                         <button name="action_create_order" type="object" states="confirmed" string="Tạo đơn hàng"
                                 class="oe_highlight" groups="vtg_security.group_vtg_employee_cashier"/>
+                        <button name="action_cancel_duplicate" type="object" states="confirmed" string="Khách đã tới nhưng trùng"
+                                groups="vtg_security.group_vtg_employee_cashier"/>
                         <button name="action_cancel_buy" type="object" states="confirmed" string="Khách không mua"
                                 groups="vtg_security.group_vtg_employee_cashier"/>
                         <button name="action_confirm_booking" type="object" states="confirm" string="Xác nhận khách tới"
