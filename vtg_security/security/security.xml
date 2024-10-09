@@ -36,6 +36,11 @@
             <field name="name">Trưởng phòng MKT</field>
             <field name="category_id" ref="module_category_vtg"/>
         </record>
+         <!--#Trưởng phòng MKT-->
+        <record id="group_vtg_department_sale" model="res.groups">
+            <field name="name">Trưởng phòng Bán hàng</field>
+            <field name="category_id" ref="module_category_vtg"/>
+        </record>
         <!--#Trưởng nhóm MKT-->
         <record id="group_vtg_team_mkt" model="res.groups">
             <field name="name">Trưởng nhóm MKT</field>
