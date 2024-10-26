@@ -1,0 +1,38 @@
+<odoo>
+    <record id="view_fpt_sms_template_form" model="ir.ui.view">
+        <field name="name">fpt.sms.template.form</field>
+        <field name="model">fpt.sms.template</field>
+        <field name="arch" type="xml">
+            <form string="SMS Template">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="content"/>
+                        <field name="template_type"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_fpt_sms_template_tree" model="ir.ui.view">
+        <field name="name">fpt.sms.template.tree</field>
+        <field name="model">fpt.sms.template</field>
+        <field name="arch" type="xml">
+            <tree string="SMS Templates">
+                <field name="name"/>
+                <field name="template_type"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_fpt_sms_template" model="ir.actions.act_window">
+        <field name="name">SMS Templates</field>
+        <field name="res_model">fpt.sms.template</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_fpt_sms_root" name="FPT SMS Integration" web_icon="fpt_sms_integration,static/description/icon.png"/>
+    <menuitem id="menu_fpt_sms_template" name="SMS Templates" parent="menu_fpt_sms_root"
+              action="action_fpt_sms_template"/>
+</odoo>
