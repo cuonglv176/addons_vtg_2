@@ -315,11 +315,11 @@ class CRM_Booking(models.Model):
     @api.model
     def create(self, vals):
         vals['name'] = self.env['ir.sequence'].next_by_code('crm.lead.booking') or '/'
-        # booking_ids = self.env['crm.lead.booking'].sudo().search(
-        #     [('user_id', '!=', vals['user_id']), ('state', '=', 'confirm'),
-        #      ('partner_phone', '=', vals['partner_phone'])])
-        # if booking_ids:
-        #     raise UserError('Khách đã có lịch đang chờ khách tới')
+        booking_ids = self.env['crm.lead.booking'].sudo().search(
+            [('user_id', '=', vals['user_id']), ('state', '=', 'confirm'),
+             ('partner_phone', '=', vals['partner_phone'])])
+        if booking_ids:
+            raise UserError('Khách đã có lịch đang chờ khách tới')
         booking = super(CRM_Booking, self).create(vals)
         return booking
 
