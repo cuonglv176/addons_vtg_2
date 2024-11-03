@@ -1,3 +1,4 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_fpt_sms_template,fpt.sms.template,model_fpt_sms_template,,1,1,1,1
 access_fpt_sms_history,fpt.sms.history,model_fpt_sms_history,,1,1,1,1
+access_fpt_config,fpt_config,model_fpt_config,,1,1,1,1

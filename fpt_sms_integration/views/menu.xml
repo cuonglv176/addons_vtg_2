@@ -1,0 +1,13 @@
+<odoo>
+    <menuitem id="menu_fpt_sms_root" name="SMS Integration"
+              web_icon="fpt_sms_integration,static/description/icon.png"/>
+
+
+    <menuitem id="menu_fpt_sms_template" name="SMS Templates" parent="menu_fpt_sms_root"
+              action="action_fpt_sms_template"/>
+
+
+<!--    <menuitem id="menu_fpt_sms_config" name="Configuration" parent="menu_fpt_sms_root"-->
+<!--              action="action_fpt_sms_template"/>-->
+
+</odoo>

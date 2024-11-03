@@ -32,7 +32,4 @@
         <field name="view_mode">tree,form</field>
     </record>
 
-    <menuitem id="menu_fpt_sms_root" name="FPT SMS Integration" web_icon="fpt_sms_integration,static/description/icon.png"/>
-    <menuitem id="menu_fpt_sms_template" name="SMS Templates" parent="menu_fpt_sms_root"
-              action="action_fpt_sms_template"/>
 </odoo>
