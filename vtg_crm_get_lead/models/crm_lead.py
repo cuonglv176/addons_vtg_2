@@ -151,20 +151,20 @@ class Lead(models.Model):
         view_notification_id = self.env.ref('vtg_crm_get_lead.vtg_crm_lead_notification_form_view').id
         division_department_id = self.env['crm.lead.division.department.detail'].search(
             [('department_id', '=', self.env.user.employee_id.department_id.id)])
-        # if division_department_id.lead_department_count >= division_department_id.lead_get:
-        #     notification_id = self.env['crm.lead.notification'].create({
-        #         'name': 'Bộ phận của bạn đã hết số lượng lead để lấy!!!'
-        #     })
-        #     return {
-        #         'type': 'ir.actions.act_window',
-        #         'res_model': 'crm.lead.notification',
-        #         'view_type': 'form',
-        #         'view_mode': 'form',
-        #         'views': [(view_notification_id, 'form')],
-        #         'target': 'new',
-        #         'res_id': notification_id.id,
-        #         'context': dict(self._context),
-        #     }
+        if division_department_id.lead_department_count >= division_department_id.lead_get:
+            notification_id = self.env['crm.lead.notification'].create({
+                'name': 'Bộ phận của bạn đã hết số lượng lead để lấy!!!'
+            })
+            return {
+                'type': 'ir.actions.act_window',
+                'res_model': 'crm.lead.notification',
+                'view_type': 'form',
+                'view_mode': 'form',
+                'views': [(view_notification_id, 'form')],
+                'target': 'new',
+                'res_id': notification_id.id,
+                'context': dict(self._context),
+            }
         lead_get_count = self.env['crm.lead'].sudo().search_count(
             [('date_open', '>=', date.today()), ('user_id', '=', self._uid)])
         _logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
