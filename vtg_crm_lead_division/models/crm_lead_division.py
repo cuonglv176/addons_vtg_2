@@ -79,7 +79,10 @@ class CrmLeadDivisionDepartmentDetail(models.Model):
             lead_ids = self.env['crm.lead'].sudo().search(
                 [('create_date', '>', datetime.today() - relativedelta(days=1)),
                  ('create_date', '<', datetime.today() + relativedelta(days=1)), ('type_get_lead', '=', 'new')])
-            lead_count = len(lead_ids)
+            lead_not_ids = self.env['crm.lead'].sudo().search(
+                [('user_id', '=', False),
+                 ('department_id', '=', False), ('type_get_lead', '=', 'new'), ('type', '=', 'lead')])
+            lead_count = len(lead_ids) + len(lead_not_ids)
             rec.lead_get = round(lead_count * rec.percent)
 
 
