@@ -84,16 +84,16 @@ class CrmLeadDivisionDepartmentDetail(models.Model):
                 [('user_id', '=', False),
                  ('department_id', '=', False),
                  ('type_get_lead', '=', 'new'),
-                 ('type', '=', 'lead')])
-            lead_not_false_ids = self.env['crm.lead'].sudo().search(
-                [('user_id', '=', False),
-                 ('department_id', '=', False),
-                 ('type_get_lead', '=', 'new'),
-                 ('type', '=', False)])
+                 ('type_lead', '!=', 'resale'), '|', ('type', '=', 'lead'), ('type', '=', False)])
+            # lead_not_false_ids = self.env['crm.lead'].sudo().search(
+            #     [('user_id', '=', False),
+            #      ('department_id', '=', False),
+            #      ('type_get_lead', '=', 'new'),
+            #      ('type', '=', False)])
             lead_open_ids = self.env['crm.lead'].sudo().search(
                 [('date_open', '>', datetime.today() - relativedelta(days=1)),
                  ('date_open', '<', datetime.today() + relativedelta(days=1)), ('type_get_lead', '=', 'new')])
-            lead_count = len(lead_not_ids) + len(lead_not_false_ids) + len(lead_open_ids)
+            lead_count = len(lead_not_ids) + len(lead_open_ids)
             rec.lead_get = round(lead_count * rec.percent)
 
 
