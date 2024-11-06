@@ -81,9 +81,7 @@ class CrmLeadDivisionDepartmentDetail(models.Model):
             #      ('create_date', '<', datetime.today() + relativedelta(days=1)), ('type_get_lead', '=', 'new'),
             #      ('type', '=', 'lead')])
             lead_not_ids = self.env['crm.lead'].sudo().search(
-                [('user_id', '=', False),
-                 ('department_id', '=', False),
-                 ('type_get_lead', '=', 'new'),
+                [('type_get_lead', '=', 'new'),
                  ('type_lead', '!=', 'resale'), '|', ('type', '=', 'lead'), ('type', '=', False)])
             # lead_not_false_ids = self.env['crm.lead'].sudo().search(
             #     [('user_id', '=', False),
